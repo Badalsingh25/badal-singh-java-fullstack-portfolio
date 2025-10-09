@@ -6,6 +6,7 @@ import {
   SiJsonwebtokens, SiGooglecloud
 } from 'react-icons/si'
 import { TbShieldLock, TbApi, TbBrandReact } from 'react-icons/tb'
+import emailjs from '@emailjs/browser'
 
 function Splash() {
   const [show, setShow] = useState<boolean>(() => !sessionStorage.getItem('seenSplash'))
@@ -282,6 +283,61 @@ function Section({ id, title, children, subtitle }: { id: string; title: string;
 }
 
 function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // EmailJS configuration - You'll need to replace these with your actual IDs
+      const serviceID = 'your_service_id_here'
+      const templateID = 'your_template_id_here'
+      const publicKey = 'your_public_key_here'
+
+      const emailData = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'beherasandeepkumar21@gmail.com'
+      }
+
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        emailData,
+        publicKey
+      )
+
+      if (result.status === 200) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        throw new Error('Failed to send email')
+      }
+    } catch (error) {
+      console.error('Email submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="p-6 bg-gradient-to-br from-neutral-900/60 to-neutral-950/60 backdrop-blur-sm rounded-xl border border-neutral-700/50">
@@ -290,10 +346,7 @@ function ContactForm() {
         <p className="text-sm text-neutral-400">Let's discuss your next project</p>
       </div>
 
-      <form name="contact" data-netlify="true" className="space-y-5">
-        {/* Hidden field for Netlify Forms */}
-        <input type="hidden" name="form-name" value="contact" />
-
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg className="h-5 w-5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,6 +357,8 @@ function ContactForm() {
             type="text"
             id="name"
             name="name"
+            value={formData.name}
+            onChange={handleChange}
             required
             className="w-full pl-10 pr-3 py-3 bg-neutral-800/50 border border-neutral-600/50 rounded-lg text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all duration-200"
             placeholder="Your name"
@@ -320,6 +375,8 @@ function ContactForm() {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
             className="w-full pl-10 pr-3 py-3 bg-neutral-800/50 border border-neutral-600/50 rounded-lg text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all duration-200"
             placeholder="your.email@example.com"
@@ -336,6 +393,8 @@ function ContactForm() {
             type="text"
             id="subject"
             name="subject"
+            value={formData.subject}
+            onChange={handleChange}
             required
             className="w-full pl-10 pr-3 py-3 bg-neutral-800/50 border border-neutral-600/50 rounded-lg text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all duration-200"
             placeholder="Subject"
@@ -351,6 +410,8 @@ function ContactForm() {
           <textarea
             id="message"
             name="message"
+            value={formData.message}
+            onChange={handleChange}
             required
             rows={4}
             className="w-full pl-10 pr-3 pt-10 pb-3 bg-neutral-800/50 border border-neutral-600/50 rounded-lg text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all duration-200 resize-none"
@@ -360,13 +421,45 @@ function ContactForm() {
 
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          disabled={isSubmitting}
+          className="w-full bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-500 hover:to-teal-400 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-          </svg>
-          Send Message
+          {isSubmitting ? (
+            <>
+              <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              Send Message
+            </>
+          )}
         </button>
+
+        {submitStatus === 'success' && (
+          <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <p className="text-green-400 text-sm text-center flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Message sent successfully! I'll get back to you soon.
+            </p>
+          </div>
+        )}
+
+        {submitStatus === 'error' && (
+          <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+            <p className="text-red-400 text-sm text-center flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Failed to send message. Please try again.
+            </p>
+          </div>
+        )}
       </form>
     </div>
   )
