@@ -306,9 +306,9 @@ function ContactForm() {
 
     try {
       // EmailJS configuration - You'll need to replace these with your actual IDs
-      const serviceID = 'your_service_id_here'
-      const templateID = 'your_template_id_here'
-      const publicKey = 'your_public_key_here'
+      const serviceID = 'jtuw kthc wmvs wsiw'
+      const templateID = 'template_d954fec'
+      const publicKey = 'Vfzn8skDW1O4R-HXx'
 
       const emailData = {
         from_name: formData.name,
