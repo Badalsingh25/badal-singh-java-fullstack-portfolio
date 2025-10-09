@@ -304,14 +304,23 @@ function ContactForm() {
     setSubmitStatus('idle')
 
     try {
-      // Simulate form submission - replace with actual email service integration
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // For Netlify Forms, we need to submit to the same page
+      const form = e.target as HTMLFormElement
+      const formData = new FormData(form)
 
-      // For now, just log the form data - you can integrate with EmailJS, Formspree, or your backend
-      console.log('Form submitted:', formData)
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      })
 
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        throw new Error('Failed to send message')
+      }
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
@@ -327,7 +336,10 @@ function ContactForm() {
         <p className="text-sm text-neutral-400">Let's discuss your next project</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-5" data-netlify="true" method="POST">
+        {/* Hidden field for Netlify Forms */}
+        <input type="hidden" name="form-name" value="contact" />
+
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg className="h-5 w-5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
