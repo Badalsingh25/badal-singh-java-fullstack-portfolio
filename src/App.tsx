@@ -175,7 +175,7 @@ function LandingHero() {
         {/* Scroll Button */}
         <button
           className="absolute left-4 md:left-8 bottom-4 md:bottom-8 w-11 h-11 rounded-full border border-[#333] text-[#777] bg-[#0a0a0a] flex items-center justify-center hover:text-white hover:border-[#666] hover:bg-[#111] transition-all z-30"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
           aria-label="Scroll down"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -201,11 +201,17 @@ function Nav() {
         <a href="#landing-hero" className="font-display text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">Badal<span className="text-teal-600 dark:text-teal-400">.dev</span></a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-10 text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-500 dark:text-neutral-400">
+        <ul className="hidden md:flex gap-12 text-[13px] font-semibold tracking-[0.18em] uppercase text-neutral-700 dark:text-neutral-300">
           {links.map(l => (
             <li key={l.href} className="relative group">
-              <a href={l.href} className="hover:text-teal-500 transition-colors duration-300 peer">{l.label}</a>
-              <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
+              <a
+                href={l.href}
+                className="transition-all duration-300 hover:text-teal-500"
+              >
+                {l.label}
+              </a>
+
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-teal-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
             </li>
           ))}
         </ul>
@@ -503,7 +509,32 @@ export default function App() {
       <Nav />
 
       {/* Hero Redundant Removed */}
-
+      {/* Hero */}
+      <section id="home" className="container-pro pt-16 sm:pt-24 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <motion.div {...fadeIn} className="lg:col-span-7 text-center lg:text-left">
+            <p className="text-sm uppercase tracking-widest text-teal-600/80 dark:text-teal-300/80 mb-2">JAVA FULLSTACK DEVELOPER PORTFOLIO</p>
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mt-3">
+              Badal Singh
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
+              Java Full Stack Developer | Spring Boot & React Developer | Building Scalable Web Applications
+            </p>
+            <p className="mt-4 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto lg:mx-0">
+              Developing secure, scalable, and high-performance full-stack applications using Java, Spring Boot, React, and modern backend architectures.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <a href="#projects" className="btn-primary">View Projects</a>
+              <button onClick={() => window.open('/Badal_CV_RESUME.pdf', '_blank')} className="btn-ghost">Resume</button>
+            </div>
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ duration: 0.6, delay: 0.1 }} className="lg:col-span-5 mt-8 lg:mt-0">
+            <div className="relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 p-4 sm:p-6">
+              <div className="text-sm text-neutral-700 dark:text-neutral-400">“I don’t just build APIs — I build systems that think, scale, and deliver.”</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* About */}
       <Section id="about" title="Who I Am">
