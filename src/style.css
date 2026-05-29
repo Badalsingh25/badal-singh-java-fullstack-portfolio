@@ -726,3 +726,32 @@ html:not(.dark) .splash-overlay {
     width: 38vw;
   }
 }
+
+@media (max-width: 640px) {
+
+  #landing-hero {
+    overflow: hidden;
+  }
+
+  #landing-hero h1 {
+    line-height: 0.9;
+  }
+
+  #landing-hero img {
+    opacity: 0.85;
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  #landing-hero .container-pro {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #landing-hero img {
+    object-position: center bottom !important;
+  }
+
+}

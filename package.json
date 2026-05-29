@@ -1,9 +1,9 @@
 {
-  "name": "sandeep-portfolio",
+  "name": "badal-singh-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/sandeepbehera21/My_Portfolio",
+  "homepage": "https://github.com/Badalsingh25/badal-singh-java-fullstack-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

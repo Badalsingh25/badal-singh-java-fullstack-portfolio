@@ -105,19 +105,22 @@ function LandingHero() {
         </div>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col justify-center relative w-full z-20 pb-20 md:pb-0">
-          <motion.div style={{ y: titleY }} className="w-full md:w-[65%] lg:w-[60%] flex flex-col z-20 pl-4 sm:pl-10 lg:pl-16 mt-8 md:mt-0">
+        <div className="flex-1 flex flex-col justify-start md:justify-center relative w-full z-20 pt-10 md:pt-0 pb-20 md:pb-0">
+          <motion.div
+  style={{ y: titleY }}
+  className="w-full md:w-[65%] lg:w-[60%] flex flex-col items-center sm:items-start z-20 px-4 sm:pl-10 lg:pl-16 mt-8 md:mt-0"
+>
             <p className="text-[#888] tracking-[0.3em] md:tracking-[0.4em] text-[9px] md:text-[11px] font-semibold mb-3 md:mb-5 uppercase ml-2 md:ml-12">
               Java Fullstack Developer
             </p>
 
-            <h1 className="text-[#ff6b57] flex flex-col leading-[0.85] text-center sm:text-left" style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
-              <span className="text-[70px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[220px] ml-0 sm:ml-20 md:ml-24 lg:ml-28 xl:ml-32 drop-shadow-lg tracking-tight sm:tracking-normal">BADAL</span>
-              <span className="text-[70px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[220px] -mt-2 sm:-mt-4 md:-mt-6 ml-0 sm:ml-[-20px] md:ml-[-40px] drop-shadow-lg tracking-tight sm:tracking-normal">SINGH</span>
+            <h1 className="text-[#ff6b57] flex flex-col leading-[0.85] items-center sm:items-start" style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
+              <span className="text-[72px] sm:text-[110px] md:text-[170px] lg:text-[200px] xl:text-[220px] ml-0 sm:ml-12 md:ml-24 lg:ml-28 xl:ml-32 drop-shadow-lg tracking-tight sm:tracking-normal">BADAL</span>
+              <span className="text-[72px] sm:text-[110px] md:text-[170px] lg:text-[200px] xl:text-[220px] -mt-2 sm:-mt-4 md:-mt-6 ml-0 sm:ml-[-10px] md:ml-[-40px] drop-shadow-lg tracking-tight sm:tracking-normal">SINGH</span>
             </h1>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-6 md:mt-10 ml-2 md:ml-12">
-              <div className="bg-[#0a0a0a] border border-[#222]/80 rounded-2xl p-4 md:p-5 flex gap-5 md:gap-7 shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+            <div className="flex flex-col items-start gap-4 mt-5 md:mt-10 ml-2 md:ml-12">
+              <div className="w-full max-w-[320px] bg-[#0a0a0a] border border-[#222]/80 rounded-2xl p-4 md:p-5 flex gap-5 md:gap-7 shadow-2xl backdrop-blur-sm relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="flex gap-5 md:gap-8 relative z-10 items-center">
                   <div className="flex flex-col text-gray-300 font-bold tracking-widest text-[9px] md:text-[11px] leading-relaxed">
@@ -136,16 +139,16 @@ function LandingHero() {
               </div>
 
               <div className="flex gap-3">
-                <a href="https://github.com/Badalsingh25" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
+                <a href="https://github.com/Badalsingh25" target="_blank" rel="noopener noreferrer" className="w-11 h-11 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
                   <SiGithub className="text-lg" />
                 </a>
-                <a href="https://www.linkedin.com/in/badal-singh-767911333" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
+                <a href="https://www.linkedin.com/in/badal-singh-767911333" target="_blank" rel="noopener noreferrer" className="w-11 h-11 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
                   <SiLinkedin className="text-lg" />
                 </a>
-                <a href="https://www.instagram.com/b2_badal_002/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
+                <a href="https://www.instagram.com/b2_badal_002/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
                   <SiInstagram className="text-lg" />
                 </a>
-                <a href="https://x.com/b2_badal_002" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
+                <a href="https://x.com/b2_badal_002" target="_blank" rel="noopener noreferrer" className="w-11 h-11 md:w-11 md:h-11 rounded-full bg-[#111] border border-[#333] flex items-center justify-center text-[#777] hover:text-white hover:border-[#666] transition-all hover:scale-110">
                   <svg className="w-4 h-4 md:w-[18px] md:h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                 </a>
               </div>
@@ -153,8 +156,11 @@ function LandingHero() {
           </motion.div>
 
           {/* Portrait Image */}
-          <motion.div style={{ y: portraitY }} className="absolute bottom-0 right-[-5%] sm:right-0 w-[85%] sm:w-[60%] md:w-[55%] lg:w-[48%] h-[60%] sm:h-[75%] md:h-[85%] lg:h-[95%] z-10 flex items-end justify-center pointer-events-none origin-bottom">
-            <div className="relative w-full h-full flex justify-end">
+          <motion.div
+  style={{ y: portraitY }}
+  className="absolute bottom-0 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-0 w-[90%] sm:w-[60%] md:w-[55%] lg:w-[48%] h-[50%] sm:h-[75%] md:h-[85%] lg:h-[95%] z-10 flex items-end justify-center pointer-events-none origin-bottom"
+>
+            <div className="relative w-full h-full flex justify-center sm:justify-end">
               <img src="/portrait/Badal_portfolio_image2.png" alt="Badal Singh portrait" className="w-auto h-full object-contain object-bottom" style={{ filter: 'brightness(1.1) contrast(1.15)', mixBlendMode: 'lighten' }} />
               {/* Left fade to blend portrait into background */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent" style={{ width: '30%' }}></div>
