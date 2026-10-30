@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
   SiSpring, SiMysql,
-  SiJsonwebtokens, SiPostman, SiGit, SiGithub, SiLinkedin, SiInstagram
+  SiPostman, SiGit, SiGithub, SiLinkedin, SiInstagram
 } from 'react-icons/si'
 import { FaJava } from 'react-icons/fa'
-import { TbShieldLock, TbApi, TbBrandReact, TbBrandJavascript, TbBrandHtml5, TbBrandCss3 } from 'react-icons/tb'
+import { TbBrandReact, TbBrandJavascript, TbBrandHtml5, TbBrandCss3 } from 'react-icons/tb'
 import emailjs from '@emailjs/browser'
 
 function Splash() {
@@ -527,11 +527,11 @@ export default function App() {
               Java Full Stack Developer | Spring Boot & React Developer | Building Scalable Web Applications
             </p>
             <p className="mt-4 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto lg:mx-0">
-              Developing secure, scalable, and high-performance full-stack applications using Java, Spring Boot, React, and modern backend architectures.
+              Developing secure, scalable, and high-performance full-stack applications using Java, Spring Boot, React, MySQL and modern backend architectures.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <a href="#projects" className="btn-primary">View Projects</a>
-              <button onClick={() => window.open('/Badal_CV_RESUME.pdf', '_blank')} className="btn-ghost">Resume</button>
+              <button onClick={() => window.open('/Badal_Singh_Resume_updated (5).pdf', '_blank')} className="btn-ghost">Resume</button>
             </div>
           </motion.div>
           <motion.div {...fadeIn} transition={{ duration: 0.6, delay: 0.1 }} className="lg:col-span-5 mt-8 lg:mt-0">
@@ -587,8 +587,9 @@ export default function App() {
                 items: [
                   { name: 'Java', icon: <FaJava className="text-[#ED8B00]" /> },
                   { name: 'Spring Boot', icon: <SiSpring className="text-[#6DB33F]" /> },
-                  { name: 'REST API', icon: <TbApi className="text-emerald-400" /> },
-                  { name: 'Spring Security', icon: <TbShieldLock className="text-green-400" /> },
+                  { name: 'Spring Data JPA', icon: <img src="/logos/spring-data-jpa.png" alt="Spring Data JPA" className="w-5 h-5 object-contain" /> },
+                  { name: 'REST API', icon: <img src="/logos/rest-api.png" alt="REST API" className="w-5 h-5 object-contain" /> },
+                  { name: 'Spring Security', icon: <img src="/logos/spring-security.png" alt="Spring Security" className="w-5 h-5 object-contain" /> },
                 ]
               },
               {
@@ -597,8 +598,8 @@ export default function App() {
                 iconBg: 'from-violet-500 to-rose-500',
                 categoryIcon: (<svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>),
                 items: [
-                  { name: 'JWT', icon: <SiJsonwebtokens className="text-pink-400" /> },
-                  { name: 'OAuth2', icon: <TbShieldLock className="text-violet-400" /> },
+                  { name: 'JWT', icon: <img src="/logos/jwt.png" alt="JWT" className="w-5 h-5 object-contain" /> },
+                  { name: 'OAuth2', icon: <img src="/logos/oauth2.png" alt="OAuth2" className="w-5 h-5 object-contain" /> },
                 ]
               },
               {
@@ -619,6 +620,8 @@ export default function App() {
                   { name: 'Git', icon: <SiGit className="text-[#F05032]" /> },
                   { name: 'GitHub', icon: <SiGithub className="text-white" /> },
                   { name: 'Postman', icon: <SiPostman className="text-[#FF6C37]" /> },
+                  { name: 'VS Code', icon: <img src="/logos/vscode.png" alt="VS Code" className="w-5 h-5 object-contain" /> },
+                  { name: 'IntelliJ IDEA', icon: <img src="/logos/intellij.png" alt="IntelliJ IDEA" className="w-5 h-5 object-contain" /> },
                 ]
               },
             ].map((cat, idx) => (
@@ -660,6 +663,17 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {[
             {
+              name: 'CodeSync – Real-Time Collaborative Development Platform',
+              desc: 'A real-time collaborative code editor where developers write and run Java and Python code together, with secure Docker-based sandboxed execution for safe, isolated code runs.',
+              stack: 'React.js, Java, Spring Boot, WebSocket, MySQL, Docker',
+              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/codesync.git' }],
+              icon: (
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              ),
+            },
+            {
               name: 'HungerExpress-Food Delivery Management System',
               desc: 'A full-stack food delivery application that streamlines online food ordering, restaurant management, and order tracking with secure authentication and responsive user experience.',
               stack: 'React.js, Java, Spring Boot, MySQL, REST API, JWT, Spring Security, Razorpay API',
@@ -671,14 +685,13 @@ export default function App() {
               ),
             },
             {
-              name: 'Hospital Management System',
-              desc: 'Built a scalable hospital management system with secure authentication, patient and doctor management, appointment booking, and efficient healthcare data handling using Spring Boot and React.',
-              stack: 'React.js, Java, Spring Boot, MySQL, REST API, JWT, Spring Security',
-              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/Hospital-Management-System' }],
+              name: 'Lab Resource Utilization Platform',
+              desc: 'A full-stack laboratory resource management platform that streamlines equipment inventory, booking, and utilization tracking. Features secure role-based authentication, conflict-free scheduling, real-time analytics, inter-institution resource sharing, maintenance workflows, and billing. Containerized with Docker and configured for automated deployment.',
+              stack: 'React.js, Spring Boot, Spring Data JPA, PostgreSQL, Spring Security, JWT, REST API, WebSocket',
+              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/lab-resource-utilization-platform.git' }],
               icon: (
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11v4m-2-2h4" />
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               ),
             },
@@ -705,6 +718,44 @@ export default function App() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                </svg>
+              ),
+            },
+            {
+              name: 'Hospital Management System',
+              desc: 'Built a scalable hospital management system with secure authentication, patient and doctor management, appointment booking, and efficient healthcare data handling using Spring Boot and React.',
+              stack: 'React.js, Java, Spring Boot, MySQL, REST API, JWT, Spring Security',
+              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/Hospital-Management-System' }],
+              icon: (
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11v4m-2-2h4" />
+                </svg>
+              ),
+            },
+            {
+              name: 'AI Email Writer',
+              desc: 'An AI-powered email reply generator with tone selection, available as a Chrome extension and a web app. Generates context-aware replies using the Gemini API, backed by a Spring Boot service.',
+              stack: 'React.js, Java, Spring Boot, Gemini API, Chrome Extension',
+              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/ai-email-writer.git' },
+              { label: 'Live Link', href: 'https://ai-email-writer-eosin.vercel.app/' }
+              ],
+              icon: (
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              ),
+            },
+            {
+              name: 'API Bolt – API Testing Tool',
+              desc: 'A feature-rich API testing tool for Chrome and Firefox, with environment variables, request collections, a JSON tree viewer, and import/export support, all in a responsive interface.',
+              stack: 'React.js, Vite, Axios, Browser Extension, JavaScript, CSS',
+              links: [{ label: 'GitHub Repo', href: 'https://github.com/Badalsingh25/api-bolt.git' },
+              { label: 'Live Link', href: 'https://api-bolt-nine.vercel.app/' }
+              ],
+              icon: (
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               ),
             },
@@ -766,10 +817,26 @@ export default function App() {
         <div className="space-y-6">
           {[
             {
+              title: 'Infosys Springboard Virtual Internship (7.0)',
+              company: 'Infosys Springboard',
+              period: 'June 2026 – August 2026',
+              location: 'Virtual',
+              certificate: '/Infosys-springboard-internship-certificate.pdf',
+              description: [
+                'Completed Infosys Springboard Internship 7.0 (B1): Intelligent Laboratory Equipment Sharing and Resource Utilization Optimization Platform.',
+                'Built the Lab Resource Utilization Platform, a full-stack system for equipment inventory, booking, and utilization tracking with secure role-based authentication.',
+                'Implemented conflict-free scheduling, real-time analytics, inter-institution resource sharing, maintenance workflows, and billing.',
+                'Containerized the application with Docker and configured it for automated deployment.',
+              ],
+              tech: ['React.js', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL', 'Spring Security', 'JWT', 'REST API', 'WebSocket', 'Docker'],
+              wins: ['Delivered a complete full-stack platform as the internship project', 'Earned the Infosys Springboard Internship 7.0 completion certificate'],
+            },
+            {
               title: 'Web developer Intern',
               company: 'INFOTACT Solutions',
               period: 'May 2025 – August 2025',
               location: 'Remote',
+              certificate: '/Badal _Singh_Internship_certificate.pdf',
               description: [
                 'Developed MERN websites ',
                 'Implemented JWT auth tokens',
@@ -816,10 +883,10 @@ export default function App() {
                         <p className="text-sm text-neutral-400">{exp.period}</p>
                         <div className="mt-1">
                           <p className="text-xs text-neutral-500">{exp.location}</p>
-                          {exp.title === 'Web developer Intern' && (
+                          {exp.certificate && (
                             <div className="mt-2 flex justify-center sm:justify-start">
                               <button
-                                onClick={() => window.open('/Badal _Singh_Internship_certificate.pdf', '_blank')}
+                                onClick={() => window.open(exp.certificate, '_blank')}
                                 className="inline-flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 border border-teal-500/30 hover:border-teal-400/50 px-4 py-2 rounded-lg bg-teal-500/5 hover:bg-teal-500/10 transition-all duration-200 hover:scale-105"
                               >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
